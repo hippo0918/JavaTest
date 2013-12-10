@@ -5,12 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Scanner;
 
 public class VisulaCalander {
 
 	public static void main(String[] args) {
-		System.out.println("è¯·è¾“å…¥ä½ æœŸæœ›çš„æ—¥æœŸï¼š");
+		System.out.println("ÇëÊäÈëÄãÆÚÍûµÄÈÕÆÚ£º");
 		/*Scanner c = new Scanner(System.in);
 		String strDate = c.next();*/
 		printCalander("2013-11-05","yyyy-MM-dd");
@@ -18,17 +17,17 @@ public class VisulaCalander {
 	
 	public static void printCalander(String strDate, String dateFormat) {
 		try {
-			System.out.print("æ˜ŸæœŸæ—¥\tæ˜ŸæœŸä¸€\tæ˜ŸæœŸäºŒ\tæ˜ŸæœŸä¸‰\tæ˜ŸæœŸå››\tæ˜ŸæœŸäº”\tæ˜ŸæœŸå…­");
+			System.out.print("ĞÇÆÚÈÕ\tĞÇÆÚÒ»\tĞÇÆÚ¶ş\tĞÇÆÚÈı\tĞÇÆÚËÄ\tĞÇÆÚÎå\tĞÇÆÚÁù");
 			Calendar calender = new GregorianCalendar();
 			SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
 			Date date = sdf.parse(strDate);
 			calender.setTime(date);
-			//è®¾ç½®è¿™ä¸ªæœˆçš„ç¬¬ä¸€å¤©,æ˜ŸæœŸå¤©æ˜¯1
+			//ÉèÖÃÕâ¸öÔÂµÄµÚÒ»Ìì,ĞÇÆÚÌìÊÇ1
 			calender.set(Calendar.DATE, 1);
 			int day_of_week = calender.get(Calendar.DAY_OF_WEEK);
-			//æœ¬æœˆæœ€å¤§æ•°
+			//±¾ÔÂ×î´óÊı
 			int max_day_of_month = calender.getActualMaximum(Calendar.DATE);
-			//é”™è¯¯:int max_day_of_month2 = calender.getMaximum(Calendar.DATE);
+			//´íÎó:int max_day_of_month2 = calender.getMaximum(Calendar.DATE);
 			
 			int j = 0;
 			for(int i=0; i<max_day_of_month + 1; i++) {

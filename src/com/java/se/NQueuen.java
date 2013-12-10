@@ -6,18 +6,18 @@ import java.util.List;
 
 
 /**
- * å¤šå°‘åˆ—ï¼Œå°±èƒ½æ”¾å¤šå°‘ä¸ªçš‡å
+ * ¶àÉÙÁĞ£¬¾ÍÄÜ·Å¶àÉÙ¸ö»Êºó
  * 
  * */
 public class NQueuen {
 
-	//è§£å†³åŠæ³•çš„æ€»æ•°
+	//½â¾ö°ì·¨µÄ×ÜÊı
 	private int solutionsCount = 0;
-	//æ£‹ç›˜åˆ—æ•°
+	//ÆåÅÌÁĞÊı
 	private int row = 0;
-	//æ£‹ç›˜
+	//ÆåÅÌ
 	private boolean[][] board = null;
-	//çš‡åæ€»æ•°
+	//»Êºó×ÜÊı
 	private int queuenCount = 0;
 	
 	public NQueuen(int size) {
@@ -27,18 +27,18 @@ public class NQueuen {
 
 	public void soleNQueuen(int y) {
 		if (y == 8)
-			return;// è¶…è¿‡8è¡Œåˆ™é€€å‡º
+			return;// ³¬¹ı8ĞĞÔòÍË³ö
 		for (int i = 0; i < row; i++) {
 			if (!checkColomn(i,y) && !checkLine(i, y)) {
 				board[i][y] = true;
 				queuenCount++;
 				if (queuenCount == 8) {
-					printQueuen(board);// æ‘†æ”¾çš‡å8ä¸ªåˆ™æ‰“å°ç»“æœ
-					board[i][y] = false;// å†æ¬¡å¯»æ‰¾å…¶ä»–æƒ…å†µ
+					printQueuen(board);// °Ú·Å»Êºó8¸öÔò´òÓ¡½á¹û
+					board[i][y] = false;// ÔÙ´ÎÑ°ÕÒÆäËûÇé¿ö
 					queuenCount--;
 					continue;
 				}
-				soleNQueuen(y + 1);// é€’å½’
+				soleNQueuen(y + 1);// µİ¹é
 				board[i][y] = false;
 				queuenCount--;
 			}
@@ -47,7 +47,7 @@ public class NQueuen {
 
 	}
 	
-	//æ£€æŸ¥æ­¤è¡Œæ˜¯å¦æœ‰çš‡å
+	//¼ì²é´ËĞĞÊÇ·ñÓĞ»Êºó
 	public boolean checkColomn(int x, int y) {
 		for(int i=0; i<row; i++) {
 			if(board[x][i]) {
@@ -60,7 +60,7 @@ public class NQueuen {
 		return false;
 	}
 	
-	//æ£€æŸ¥æ–œè¾¹æ˜¯å¦æœ‰çš‡å
+	//¼ì²éĞ±±ßÊÇ·ñÓĞ»Êºó
 	public boolean checkLine(int x, int y) {
 		int i=0,j=0;
 		for(i=x, j=y; i<row && j <row; i++,j++) {
@@ -86,7 +86,7 @@ public class NQueuen {
 		return false;
 	}
 	
-	//æ”¾çš‡å
+	//·Å»Êºó
 	public void put(int i, int j) {
 		solutionsCount++;
 		board[i][j] = true;
@@ -94,11 +94,11 @@ public class NQueuen {
 	
 	public void printQueuen(boolean[][] board) {
 		solutionsCount++;
-		System.out.println("*******************ç¬¬"+solutionsCount+"ç§*****************");
+		System.out.println("*******************µÚ"+solutionsCount+"ÖÖ*****************");
 		for(int i=0; i<row; i++) {
 			for(int j=0; j<row; j++) {
 				if(!board[i][j]) {
-					System.out.print(" â—‹ ");
+					System.out.print(" ¡ğ ");
 				} else {
 					System.out.print(" * ");
 				}

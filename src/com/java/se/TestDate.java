@@ -10,9 +10,8 @@ public class TestDate {
 
 	public static void main(String[] args) {
 		Calendar c = new GregorianCalendar();
-		SimpleDateFormat dateFormatToDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss,属于这个月的第W周");
 		SimpleDateFormat dateFormatFromDate = new SimpleDateFormat("yyyyMMdd");
-		
+		SimpleDateFormat dateFormatToDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
 			String date = "20120520";
 			Date d = new Date();

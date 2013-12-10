@@ -4,18 +4,18 @@ package com.java.se;
 
 
 /**
- * å¤šå°‘åˆ—ï¼Œå°±èƒ½æ”¾å¤šå°‘ä¸ªçš‡å
+ * ¶àÉÙÁĞ£¬¾ÍÄÜ·Å¶àÉÙ¸ö»Êºó
  * 
  * */
 public class NQueuenMine {
 
-	//è§£å†³åŠæ³•çš„æ€»æ•°
+	//½â¾ö°ì·¨µÄ×ÜÊı
 	private int solutionsCount = 0;
-	//æ£‹ç›˜åˆ—æ•°
+	//ÆåÅÌÁĞÊı
 	private int row = 0;
-	//æ£‹ç›˜
+	//ÆåÅÌ
 	private boolean[][] board = null;
-	//å·²çš‡åæ•°
+	//ÒÑ»ÊºóÊı
 	private int queueCount = 0;
 	
 	public NQueuenMine(int size) {
@@ -26,7 +26,7 @@ public class NQueuenMine {
 	public void soleNQueuen(int x) {
 		testPrint(board);
 		if (x == row)
-			return;// è¶…è¿‡8è¡Œåˆ™é€€å‡º
+			return;// ³¬¹ı8ĞĞÔòÍË³ö
 		for (int y = 0; y < row; y++) {
 			if(!checkColomn(x, y) && !checkLine(x, y)) {
 				queueCount++;
@@ -43,7 +43,7 @@ public class NQueuenMine {
 		//return;
 
 	}
-	//æ£€æŸ¥æ­¤è¡Œæ˜¯å¦æœ‰çš‡å
+	//¼ì²é´ËĞĞÊÇ·ñÓĞ»Êºó
 	public boolean checkColomn(int x, int y) {
 		for(int i=0; i<row; i++) {
 			if(board[x][i]) {
@@ -56,7 +56,7 @@ public class NQueuenMine {
 		return false;
 	}
 	
-	//æ£€æŸ¥æ–œè¾¹æ˜¯å¦æœ‰çš‡å
+	//¼ì²éĞ±±ßÊÇ·ñÓĞ»Êºó
 	public boolean checkLine(int x, int y) {
 		int i=0,j=0;
 		for(i=x, j=y; i<row && j <row; i++,j++) {
@@ -85,11 +85,11 @@ public class NQueuenMine {
 	
 	public void printQueuen(boolean[][] board) {
 		solutionsCount++;
-		System.out.println("*******************ç¬¬"+solutionsCount+"ç§*****************");
+		System.out.println("*******************µÚ"+solutionsCount+"ÖÖ*****************");
 		for(int i=0; i<row; i++) {
 			for(int j=0; j<row; j++) {
 				if(!board[i][j]) {
-					System.out.print(" â—‹ ");
+					System.out.print(" ¡ğ ");
 				} else {
 					System.out.print(" * ");
 				}
@@ -102,11 +102,11 @@ public class NQueuenMine {
 	}
 	
 	public void testPrint(boolean[][] board) {
-		System.out.println("*******************æµ‹è¯•*****************");
+		System.out.println("*******************²âÊÔ*****************");
 		for(int i=0; i<row; i++) {
 			for(int j=0; j<row; j++) {
 				if(!board[i][j]) {
-					System.out.print(" â—‹ ");
+					System.out.print(" ¡ğ ");
 				} else {
 					System.out.print(" * ");
 				}
