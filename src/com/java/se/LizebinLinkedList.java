@@ -1,17 +1,18 @@
 package com.java.se;
 
 
+/**
+	µ¥ÏòÁ´±í
+**/
 public class LizebinLinkedList<E> implements DefinitionList<E> {
-	
-	private int size;
 	
 	private Node<E> header;
 	
 	public LizebinLinkedList() {
-		header = new Node<E>();
+		
 	}
 	public boolean isEmpty() {
-		if(size == 0) {
+		if(this.size() == 0) {
 			return true;
 		}
 		return false;
@@ -33,15 +34,15 @@ public class LizebinLinkedList<E> implements DefinitionList<E> {
 	};
 	
 	public void add(E object) {
-		add(size, object);
+		add(this.size(), object);
 	};
 	
 	public void add(int index, E object){
 		Node<E> next = null;
 		checkIndex(index);
 		if(index == 0) {
+			header = new Node<E>();
 			header.setNodeValue(object);
-			size++;
 			return;
 		}
 		next = header;
@@ -52,22 +53,21 @@ public class LizebinLinkedList<E> implements DefinitionList<E> {
 		}
 		Node<E> node = new Node<E>(object, next.getNext());
 		next.setNext(node);
-		size++;
 	};
 	
 	@SuppressWarnings("unchecked")
 	public E remove(int index) {
 		checkIndex(index);
 		Node<E> next = header;
+		Node<E> oldNode = null;
 		E oldNodeValue = null;
 		if(index == 0) {
-			Node<E> temp = header;
-			oldNodeValue = temp.getNodeValue();
+			oldNode = header;
+			oldNodeValue = oldNode.getNodeValue();
 			header = header.getNext();
-			temp.setNodeValue(null);
-			temp.setNext(null);
-			temp = null;
-			size--;
+			oldNode.setNodeValue(null);
+			oldNode.setNext(null);
+			oldNode = null;
 			return oldNodeValue;
 		}
 		int i = 0;
@@ -75,39 +75,43 @@ public class LizebinLinkedList<E> implements DefinitionList<E> {
 			next = next.getNext();
 			i++;
 		}
-		Node<E> oldNode = next.getNext();
+		oldNode = next.getNext();
 		next.setNext(oldNode.getNext());
 		oldNodeValue = oldNode.getNodeValue();
 		oldNode.setNodeValue(null);
 		oldNode.setNext(null);
 		oldNode = null;
-		size--;
 		return oldNodeValue;
 	};
 	
 	public int size() {
+		Node<E> next = header;
+		int size = 0;
+		while(next != null) {
+			next = next.getNext();
+			size++;
+		}
 		return size;
 	};
 	
 	public void clear() {
 		Node<E> next = header;
 		while(next.getNext() != null) {
+			//ÓÃÁÙÊ±±äÁ¿±£´æÒªÉ¾³ýµÄ±äÁ¿
 			Node<E> temp = next;
 			next = next.getNext();
 			temp.setNodeValue(null);
 			temp.setNext(null);
 			temp = null;
-			size--;
 		}
 		next.setNodeValue(null);
 		next = null;
-		size--;
 	};
 	
 	public void set(int index, E object) {
 		Node<E> next = header;
 		int i = 0;
-		while(next != null) {
+		while(next.getNext() != null) {
 			if(i == index) {
 				next.setNodeValue(object);
 				return;
@@ -117,7 +121,7 @@ public class LizebinLinkedList<E> implements DefinitionList<E> {
 		}
 	};
 	
-	//ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½Ì¬ï¿½Ú²ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ì¬ï¿½Ú²ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½
+	//ÔÚ´´½¨¾²Ì¬ÄÚ²¿ÀàÊ±²»ÐèÒª½«¾²Ì¬ÄÚ²¿ÀàµÄÊµÀý°ó¶¨ÔÚÍâ²¿ÀàµÄÊµÀýÉÏ
 	//static : Parent.Children c = new Parent.Children();
 	//nonstatic : Parent.Children c = new Parent().new Children();
 	static class Node<E> {
@@ -150,7 +154,7 @@ public class LizebinLinkedList<E> implements DefinitionList<E> {
 			throw new IllegalArgumentException("Illegal Index: " + index);
 		}
 		
-		if(size < index) {
+		if(this.size() < index) {
 			throw new IndexOutOfBoundsException("Index out of bounds: " + index);
 		}
 	}

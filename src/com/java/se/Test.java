@@ -25,15 +25,12 @@ public class Test {
 		list.add("bin5");
 		list.add("bin6");
 		list.add("bin7");
-		System.out.println(list.size());
-		for(int i=0; i<list.size(); i++) {
-			System.out.println(list.get(i));
-		}
-		String s = list.remove(1);
-		String s1 = list.remove(0);
-		System.out.println("s = " + s);
-		System.out.println("s1 = " + s1);
-		//list.clear(); 
+		
+		list.add(1, "bin0.1");
+		list.add(2, "bin0.2");
+		list.add(3, "bin0.3");
+		list.add(13, "bin7.1");
+		
 		System.out.println("list.size = " + list.size());
 		for(int i=0; i<list.size(); i++) {
 			System.out.println(list.get(i));
@@ -41,7 +38,7 @@ public class Test {
 		
 	}
 	
-	public static void printList(DefinitionList list) {
+	public static void printList(DefinitionList<?> list) {
 		for(int i=0; i<list.size(); i++) {
 			System.out.println(list.get(i));
 		}
