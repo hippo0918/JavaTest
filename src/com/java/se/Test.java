@@ -41,6 +41,9 @@ public class Test {
 			System.out.println(list.get(i));
 		}
 		
+		//处理器核心数
+		System.out.println(Runtime.getRuntime().availableProcessors());
+		
 	}
 	
 	public static void printList(DefinitionList<?> list) {
