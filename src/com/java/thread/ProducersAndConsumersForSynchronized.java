@@ -1,11 +1,13 @@
 package com.java.thread;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /*
 生产者消费者问题
 */
-public class ProducersAndConsumers {
+public class ProducersAndConsumersForSynchronized {
 	public static void main(String[] args) {
 		Basket basket = new Basket();
 		Thread p = new Thread(new Producers(basket));
@@ -29,13 +31,13 @@ class Bread {
 	}
 }
 class Basket {
-	public Bread[] breads = new Bread[0];
+	public List<Bread> breads = new ArrayList<Bread>();
 	
 	/*
 	拿包子
 	*/
 	public synchronized Bread pop() {
-		if(breads.length == 0) {
+		if(breads.size() == 0) {
 			this.notify();
 			try {
  				this.wait();
@@ -44,9 +46,9 @@ class Basket {
 				e.printStackTrace();
 			}
 		}
-		Bread b = breads[breads.length - 1];
-		breads = Arrays.copyOf(breads, breads.length - 1);
-		System.out.println("Poping Bread's id is " + b.getId());
+		Bread b = breads.get(breads.size() - 1);
+		/*breads = Arrays.copyOf(breads, breads.length - 1);
+		System.out.println("Poping Bread's id is " + b.getId());*/
 		return b;
 	}
 	
@@ -54,7 +56,7 @@ class Basket {
 	放包子
 	*/
 	public synchronized void push(Bread b) {
-		if(breads.length == 20) {
+		if(breads.size() == 20) {
 			this.notify();
 			try {
  				this.wait();
@@ -69,10 +71,6 @@ class Basket {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		int oldSize = breads.length;
-		breads = Arrays.copyOf(breads, oldSize + 1);
-		breads[oldSize] = b;
-		System.out.println("Pushing Bread's id is " + b.getId());
 	}
 }
 

@@ -40,6 +40,7 @@ public class MyAnswer {
 				}
 			}
 		}
+		System.out.println("aaa abc ddd abc abc ".replaceAll(" abc", " "));
 		
 	}
 	
